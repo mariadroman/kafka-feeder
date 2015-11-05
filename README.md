@@ -6,7 +6,7 @@
 - Start a zookeeper instance :
 	- bin/zookeeper-server-start.sh config/zookeeper.properties
 - Start the first kafka broker in the cluster :
-  bin/kafka-server-start.sh config/server.properties
+	- bin/kafka-server-start.sh config/server.properties
 - Make a copy of the configuration file for the second kafka broker in the cluster :
 	- cp config/server.properties config/server-1.properties
 - Adjust the configuration for the second kafka broker to avoid brokerId, portNumber and logfile clashes
@@ -27,9 +27,9 @@
 			
 - We should now have a kafka cluster with three brokers that looks something like this:
 
-                /  broker-0
-      zookeeper -  broker-1
-                \  broker-2
+                  /  broker-0
+        zookeeper -  broker-1
+                  \  broker-2
                 
 
 # Producing Kafka events
