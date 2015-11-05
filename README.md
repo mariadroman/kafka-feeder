@@ -21,21 +21,21 @@
 	- bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 --partitions 1 --topic github
 - Verify that the topic was created succesfully
 	- bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic github
-	
+
         	Topic:github	PartitionCount:1	ReplicationFactor:3 Configs:
 			Topic: github	Partition: 0	Leader: 1 Replicas: 1,2,0	Isr: 1,2,0
-			
+
 - We should now have a kafka cluster with three brokers that looks something like this:
 
                   /  broker-0
         zookeeper -  broker-1
                   \  broker-2
-                
+
 
 # Producing Kafka events
 - Checkout the kafka-feeder repository from github:
 	- git clone https://github.com/daanhoogenboezem/kafka-feeder
-- We'll be analyzing a dataset that contains a very on all public github activity. Create a directory for that and step into it.
+- We'll be working with githubarchive.org data. Create a directory for the data and step into it.
 	- mkdir ~/githubdata && cd ~/githubdata
 - Download a dataset from githubarchive.org that represents 1 weeks worth of events on all public repositories:
 	- wget http://data.githubarchive.org/2015-01-0{1..7}-{0..23}.json.gz
@@ -55,12 +55,11 @@
 - Step into the kafka directory
 - Consume the stream of events being pushed to the 'github' topic:
 	- bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic github --from-beginning
-	
+
 # Kafka management
 - Make sure that Kafka only binds to localhost
 	- Uncomment '#host.name=localhost' in config/server-*.properties
 - Enable the deletion of topics by adding the following entry to config/server-*.properties
 	- delete.topic.enable=true
 - Deleting a topic from kafka
-	- bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic topic-name 
-	
+	- bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic topic-name
