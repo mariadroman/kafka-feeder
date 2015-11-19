@@ -7,6 +7,7 @@ lazy val root = (project in file(".")).
   )
 
 val meta = """META.INF(.)*""".r
+
 assemblyMergeStrategy in assembly := {
   case meta(_) => MergeStrategy.discard
   case "UnusedStubClass.class" => MergeStrategy.discard

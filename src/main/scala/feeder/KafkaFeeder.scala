@@ -9,7 +9,6 @@ import org.apache.kafka.clients.producer.{ProducerConfig, KafkaProducer, Produce
  * Send messages to a particular Kafka topic
  */
 object KafkaFeeder {
-
   /**
    * Send messagess to a particular Kafka topic
    * @param args: expected 4 args:
